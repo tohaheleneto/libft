@@ -15,7 +15,7 @@ void	ft_foreach(int *tab, int length, void (*f)(int))
 	int i;
 
 	i = 0;
-	if (length > 0 && tab >= 0)
+	if (length > 0 && tab != 0)
 	{
 		while (i < length)
 		{

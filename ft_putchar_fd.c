@@ -17,7 +17,7 @@ void	ft_putchar_fd(char c, int fd)
 	int		a;
 	int		b;
 
-	if ((int)c < 128)
+	if ((unsigned char)c < 128)
 		write(fd, &c, sizeof(c));
 	else
 	{
