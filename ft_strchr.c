@@ -3,26 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 11:25:39 by cmiklaz           #+#    #+#             */
-/*   Updated: 2019/01/05 03:26:06 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/25 06:35:24 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/27 10:46:27 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	ch_a;
-	char	*arr;
+	char	*si;
+	char	ch;
 
-	ch_a = (char)c;
-	arr = (char *)s;
-	while (*arr != '\0' && *arr != ch_a)
-		arr++;
-	if (*arr != ch_a)
-		return (NULL);
-	else
-		return (arr);
+	si = (char*)s;
+	ch = (char)c;
+	while (*si)
+	{
+		if (*si == ch)
+			return ((char *)si);
+		si++;
+	}
+	if (ch == '\0')
+		return ((char *)si);
+	return (NULL);
 }

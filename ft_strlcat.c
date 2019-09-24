@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 18:52:28 by cmiklaz           #+#    #+#             */
-/*   Updated: 2018/12/02 14:33:32 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/26 00:59:55 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/27 21:26:36 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	char		*dst_c;
-	const char	*src_c;
-	size_t		n;
-	size_t		len;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	dst_c = dst;
-	src_c = src;
-	n = size;
-	while (n-- && *dst_c != '\0')
-		dst_c++;
-	len = dst_c - dst;
-	n = size - len;
-	if (n == 0)
-		return (len + ft_strlen(src_c));
-	while (*src_c != '\0')
+	i = 0;
+	j = 0;
+	k = ft_strlen(src);
+	while (dst[i] && i < size)
+		i++;
+	if (size > 0)
 	{
-		if (n != 1)
+		while (src[j] && i < size - 1)
 		{
-			*dst_c++ = *src_c;
-			n--;
+			dst[i++] = src[j++];
 		}
-		src_c++;
 	}
-	*dst_c = '\0';
-	return (len + (src_c - src));
+	if (j > 0)
+	{
+		dst[i] = '\0';
+		return (k + i - j);
+	}
+	return (k + i);
 }

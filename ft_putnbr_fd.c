@@ -3,39 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/12 22:45:25 by cmiklaz           #+#    #+#             */
-/*   Updated: 2018/12/17 13:00:31 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/26 03:10:23 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/27 10:37:49 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n == -2147483648)
-	{
-		ft_putchar_fd('-', fd);
-		ft_putchar_fd('2', fd);
-		n %= 1000000000;
-		n = -n;
-	}
-	else if (n == 2147483647)
-	{
-		ft_putchar_fd('2', fd);
-		n %= 1000000000;
-	}
+	char			k;
+	unsigned long	l;
+	unsigned int	temp;
+
 	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
-		ft_putnbr_fd(n * (-1), fd);
-	}
-	else if (n >= 10)
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		write(fd, "-", 1);
+		temp = -n;
 	}
 	else
-		ft_putchar_fd(n + '0', fd);
+		temp = n;
+	l = 1;
+	while (temp >= l * 10)
+		l *= 10;
+	while (l)
+	{
+		k = temp / l % 10 + '0';
+		l = l / 10;
+		write(fd, &k, 1);
+	}
 }

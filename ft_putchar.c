@@ -3,16 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/12 20:07:01 by cmiklaz           #+#    #+#             */
-/*   Updated: 2019/01/02 16:17:20 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/20 14:31:08 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/26 00:57:47 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putchar(char c)
 {
-	ft_putchar_fd(c, 1);
+	unsigned char ch;
+	unsigned char buff[2];
+
+	ch = (unsigned char)c;
+	if (ch <= 127)
+		write(1, &ch, 1);
+	else
+	{
+		buff[0] = 128 + 64 + ch / 64;
+		buff[1] = 128 + ch % 64;
+		write(1, buff, 2);
+	}
 }

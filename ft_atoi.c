@@ -3,48 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/01 16:49:53 by cmiklaz           #+#    #+#             */
-/*   Updated: 2019/01/02 16:35:29 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/26 04:52:53 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/27 10:35:57 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-static int	ft_atoi_skip_spaces(const char *str, int i)
+int		ft_atoi(const char *str)
 {
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\v'
-			|| str[i] == '\f' || str[i] == '\r'
-			|| str[i] == '\n')
-		i++;
-	return (i);
-}
+	char	c;
+	long	res;
+	long	counter;
 
-int			ft_atoi(const char *str)
-{
-	int				i;
-	long			nb;
-	int				flag;
-	long			check;
-
-	nb = 0;
-	i = 0;
-	flag = 1;
-	i = ft_atoi_skip_spaces(str, i);
-	if (str[i] == '-')
-		flag = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while ((str[i] >= 48 && str[i] <= 57) && (str[i] != '\0'))
+	c = 1;
+	res = 0;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+		c = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
 	{
-		check = nb;
-		nb = (nb * 10) + ((str[i] - 48) * flag);
-		i++;
-		if ((check < 0) && (nb > check))
-			return (0);
-		if ((check > 0) && (nb < check))
+		counter = res;
+		res = res * 10 + c * (*str - '0');
+		if (res < counter && counter > 0)
 			return (-1);
+		if (res > counter && counter < 0)
+			return (0);
+		str++;
 	}
-	return (nb);
+	return (res);
 }

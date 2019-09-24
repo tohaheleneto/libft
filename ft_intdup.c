@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_if.c                                      :+:      :+:    :+:   */
+/*   ft_intdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 12:03:45 by cmiklaz           #+#    #+#             */
-/*   Updated: 2018/11/25 18:30:55 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/29 11:25:55 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/29 11:32:00 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_count_if(char **tab, int (*f)(char*))
-{
-	int count;
-	int i;
+#include <stdlib.h>
 
+int		*ft_intdup(int *src, size_t n)
+{
+	size_t	i;
+	int		*res;
+
+	res = malloc(sizeof(int) * n);
+	if (!res)
+		return (NULL);
 	i = 0;
-	count = 0;
-	while (tab[i] != '\0')
+	while (n > i)
 	{
-		if (f(tab[i]) == 1)
-		{
-			count++;
-		}
+		res[i] = src[i];
 		i++;
 	}
-	return (count);
+	return (res);
 }

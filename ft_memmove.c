@@ -3,35 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 17:40:25 by cmiklaz           #+#    #+#             */
-/*   Updated: 2019/01/05 02:18:16 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/26 03:53:58 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/27 10:32:18 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*mass;
-	unsigned char	*str;
-	size_t			i;
+	void	*cdst;
 
-	i = 0;
-	mass = (unsigned char *)dst;
-	str = (unsigned char *)src;
-	if (dst < src)
-		while (i < len)
-		{
-			*(mass + i) = *(str + i);
-			i++;
-		}
+	cdst = dst;
 	if (dst > src)
-		while (len)
+	{
+		dst = dst + len - 1;
+		src = src + len - 1;
+		while (len > 0)
 		{
+			*(unsigned char*)dst = *(unsigned char*)src;
+			dst--;
+			src--;
 			len--;
-			*(mass + len) = *(str + len);
 		}
-	return (mass);
+	}
+	if (dst < src)
+		while (len > 0)
+		{
+			*(unsigned char*)dst = *(unsigned char*)src;
+			dst++;
+			src++;
+			len--;
+		}
+	return (cdst);
 }

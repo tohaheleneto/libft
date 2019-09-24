@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_happy_smile.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 11:49:17 by cmiklaz           #+#    #+#             */
-/*   Updated: 2018/11/25 17:56:08 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/27 22:11:25 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/29 11:52:45 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void (*f)(int))
+#include <unistd.h>
+
+void	ft_happy_smile(char *s)
 {
-	int i;
+	size_t	i;
 
 	i = 0;
-	if (length > 0 && tab != 0)
+	while (s[i])
 	{
-		while (i < length)
-		{
-			f(tab[i]);
-			i++;
-		}
+		write(1, &s[i], 1);
+		i++;
 	}
+	write(1, ":)", 2);
 }

@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strdup.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/28 22:42:18 by cmiklaz           #+#    #+#             */
-/*   Updated: 2019/01/05 03:15:28 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/25 02:58:25 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/25 03:24:10 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
 
 char	*ft_strdup(const char *s1)
 {
-	char	*cpy;
-	int		i;
-	size_t	len;
+	size_t	i;
+	char	*res;
 
 	i = 0;
-	len = ft_strlen(s1);
-	if (!s1)
-		return (NULL);
-	cpy = (char *)malloc(sizeof(char) * len + 1);
-	if (!cpy)
-		return (NULL);
-	while (s1[i] != '\0')
+	while (s1[i])
+		i++;
+	res = malloc(i + 1);
+	if (res == NULL)
+		return (res);
+	res[i] = '\0';
+	i = 0;
+	while (s1[i])
 	{
-		cpy[i] = s1[i];
+		res[i] = s1[i];
 		i++;
 	}
-	cpy[i] = '\0';
-	return (cpy);
+	return (res);
 }

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_intdec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vminisa- <vminisa-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 13:51:10 by vminisa-          #+#    #+#             */
-/*   Updated: 2018/11/25 01:35:54 by vminisa-         ###   ########.fr       */
+/*   Created: 2018/11/29 11:34:55 by vminisa-          #+#    #+#             */
+/*   Updated: 2019/09/21 14:53:37 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_intdec(size_t n, int *src)
 {
-	ft_memset(s, '\0', n);
+	size_t	i;
+
+	i = 0;
+	if (src)
+	{
+		while (i < n)
+		{
+			src[i]--;
+			i++;
+		}
+	}
 }

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nod.c                                           :+:      :+:    :+:   */
+/*   ft_intmem.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/02 13:48:16 by cmiklaz           #+#    #+#             */
-/*   Updated: 2019/01/02 13:50:30 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/29 11:20:15 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/29 11:25:36 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int		ft_nod(int a, int b)
+int	*ft_intmem(size_t count)
 {
-	if (a == 1)
-		return (b);
-	else if (b == 1)
-		return (a);
-	while (a != 0 && b != 0)
+	int		*res;
+	size_t	i;
+
+	res = (int*)malloc(sizeof(int) * count);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (count > 0)
 	{
-		if (a > b)
-			a %= b;
-		else
-			b %= a;
+		res[i] = 0;
+		i++;
+		count--;
 	}
-	return (a + b);
+	return (res);
 }

@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 16:16:33 by cmiklaz           #+#    #+#             */
-/*   Updated: 2019/01/05 05:11:38 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/20 14:18:11 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/25 03:31:32 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*arr1;
-	unsigned char	*arr2;
+	const unsigned char *ch;
+	unsigned char		*dch;
 
-	arr1 = (unsigned char *)src;
-	arr2 = (unsigned char *)dst;
-	i = 0;
-	while (i < n)
+	ch = (unsigned char*)src;
+	dch = (unsigned char*)dest;
+	while (n > 0)
 	{
-		arr2[i] = arr1[i];
-		i++;
+		*dch = *ch;
+		dch++;
+		ch++;
+		n--;
 	}
-	return (arr2);
+	return (dest);
 }

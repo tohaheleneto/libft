@@ -3,33 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/12 22:30:22 by cmiklaz           #+#    #+#             */
-/*   Updated: 2018/12/12 23:03:44 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/26 02:03:34 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/27 10:37:06 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
 void	ft_putnbr(int n)
 {
-	if (n == -2147483648)
+	char			k;
+	unsigned long	l;
+	unsigned int	temp;
+
+	if (n < 0)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr(147483648);
-	}
-	else if (n < 0)
-	{
-		ft_putchar('-');
-		ft_putnbr(n * (-1));
-	}
-	else if (n > 9)
-	{
-		ft_putnbr(n / 10);
-		ft_putnbr(n % 10);
+		write(1, "-", 1);
+		temp = -n;
 	}
 	else
-		ft_putchar(n + '0');
+		temp = n;
+	l = 1;
+	while (temp >= l * 10)
+		l = l * 10;
+	while (l)
+	{
+		k = temp / l % 10 + '0';
+		l = l / 10;
+		write(1, &k, 1);
+	}
 }

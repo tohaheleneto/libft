@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_div_mod.c                                       :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmiklaz <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vminisa- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 21:03:58 by cmiklaz           #+#    #+#             */
-/*   Updated: 2018/11/20 21:09:37 by cmiklaz          ###   ########.fr       */
+/*   Created: 2018/11/19 15:07:42 by vminisa-          #+#    #+#             */
+/*   Updated: 2018/11/29 11:12:32 by vminisa-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_div_mod(int a, int b, int *div, int *mod)
+#include "libft.h"
+
+void	ft_is_negative(int n)
 {
-	if (b != 0)
-	{
-		*div = a / b;
-		*mod = a % b;
-	}
+	if (n < 0)
+		ft_putchar('N');
+	else
+		ft_putchar('P');
 }
